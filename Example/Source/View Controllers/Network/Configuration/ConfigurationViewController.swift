@@ -85,6 +85,10 @@ class ConfigurationViewController: ProgressViewController {
         } else if node.defaultTTL == nil {
             getTtl()
         }
+        
+        //TODO: AARTHI
+        // Add an app key
+        // Bind the app key to all models in all elements
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
