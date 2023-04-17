@@ -1,3 +1,4 @@
+
 /*
 * Copyright (c) 2019, Nordic Semiconductor
 * All rights reserved.
@@ -31,36 +32,47 @@
 import Foundation
 import nRFMeshProvision
 
-extension UInt16 {
+/*
+ The Generic User Property Set Unacknowledged message, according to the Bluetooth SIG mesh specs are:
+ User Property ID | 2 octets | Property ID identifying a Generic User Property
+ User Property Value | variable size | Raw value for the User Property
+ Opcode 0x4D
+ */
+
+
+public struct GenericUserPropertySetUnacknowledged: StaticVendorMessage {
+    // The Op Code consists of:
+    // 0xC0-0000 - Vendor Op Code bitmask
+    // 0x03-0000 - The Op Code defined by...
+    // 0x00-5900 - Nordic Semiconductor ASA company ID (in Little Endian) as defined here:
+    //             https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/
+    /*
+     var vendorOpCode: UInt8 = 0xC0
+     var genericUserPropertySetUnacknowledgedOpCode: UInt8 = 0x4D
+     var nordicCIDLittleEndian: UInt16 = 0xFE58
+     */
+    public static var opCode: UInt32 = (UInt32(0xC0 | 0x4D) << 16) | UInt32(0xFE58.bigEndian)
     
-    // Bluetooth SIG Models
-    static let configurationServerModelId: UInt16 = 0x0000
-    static let configurationClientModelId: UInt16 = 0x0001
+    public var parameters: Data? {
+        let propIdUint8:[UInt8] = [UInt8(propertyID & 0xff), UInt8(propertyID >> 8)]
+        return Data(propIdUint8 + [UInt8(propertyValue)])
+    }
     
-    static let genericOnOffServerModelId: UInt16 = 0x1000
-    static let genericOnOffClientModelId: UInt16 = 0x1001
-    static let genericLevelServerModelId: UInt16 = 0x1002
-    static let genericLevelClientModelId: UInt16 = 0x1003
+    /// The state.
+    public let propertyID: UInt16
+    public let propertyValue: Int8
     
-    static let genericDefaultTransitionTimeServerModelId: UInt16 = 0x1004
-    static let genericDefaultTransitionTimeClientModelId: UInt16 = 0x1005
+    init(propertyID: UInt16, propertyValue: Int8) {
+        self.propertyID = propertyID
+        self.propertyValue = propertyValue
+    }
     
-    static let genericPowerOnOffServerModelId: UInt16 = 0x1006
-    static let genericPowerOnOffSetupServerModelId: UInt16 = 0x1007
-    static let genericPowerOnOffClientModelId: UInt16 = 0x1008
-    
-    static let genericPropertyClientModelId: UInt16 = 0x1015
-    
-    static let sceneServerModelId: UInt16 = 0x1203
-    static let sceneSetupServerModelId: UInt16 = 0x1204
-    static let sceneClientModelId: UInt16 = 0x1205
-    
-    static let sensorServerModelId: UInt16 = 0x1100
-    static let sensorServerSetupModelId: UInt16 = 0x1101
-    static let sensorClientModelId: UInt16 = 0x1102
-    
-    // Supported vendor models
-    static let simpleOnOffModelId: UInt16 = 0x0001
-    static let nordicSemiconductorCompanyId: UInt16 = 0x0059
+    public init?(parameters: Data) {
+        guard parameters.count == 2 else {
+            return nil
+        }
+        propertyID = UInt16(parameters[0])
+        propertyValue = Int8(parameters[1])
+    }
     
 }
