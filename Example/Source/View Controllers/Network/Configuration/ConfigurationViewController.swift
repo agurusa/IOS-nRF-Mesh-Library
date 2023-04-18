@@ -31,6 +31,13 @@
 import UIKit
 import nRFMeshProvision
 
+let GroupAddress:Address = 0xC000
+let ConfigurationServerModelID: UInt16 = 0x0000
+let ESP_BLE_MESH_MODEL_ID_GEN_ONOFF_SRV:UInt16 = 0x1000
+let ESP_BLE_MESH_MODEL_ID_LIGHT_HSL_CLI:UInt16 = 0x1309
+let ESP_BLE_MESH_MODEL_ID_LIGHT_HSL_SRV:UInt16 = 0x1307
+let ModelIDsToSubscribeToGroup : [Address] = [ESP_BLE_MESH_MODEL_ID_GEN_ONOFF_SRV, ESP_BLE_MESH_MODEL_ID_LIGHT_HSL_CLI , ESP_BLE_MESH_MODEL_ID_LIGHT_HSL_SRV]
+
 class ConfigurationViewController: ProgressViewController {
     
     // MARK: - Public properties
@@ -64,6 +71,100 @@ class ConfigurationViewController: ProgressViewController {
             refreshControl!.tintColor = UIColor.white
             refreshControl!.addTarget(self, action: #selector(getCompositionData), for: .valueChanged)
         }
+    }
+    
+    /// Adds the given Application Key to the target Node.
+    ///
+    /// - parameter applicationKey: The Application Key to be added.
+    func addKey(_ applicationKey: ApplicationKey) {
+        start("Adding Application Key...") {
+            let message = ConfigAppKeyAdd(applicationKey: applicationKey)
+            return try MeshNetworkManager.instance.send(message, to: self.node)
+        }
+    }
+    //Binds the application key to the model
+    
+    func bind(_ applicationKey: ApplicationKey, model: Model){
+        start("Binding Application Key...") {
+            let message = ConfigModelAppBind(applicationKey: applicationKey, to: model)!
+            return try MeshNetworkManager.instance.send(message, to: self.node)
+        }
+    }
+    /// Adds the given Application Key to the target element.
+    ///
+    /// - parameter applicationKey: The Application Key to be added.
+    func addKey(_ applicationKey: ApplicationKey, model: Model, element: Element) {
+        start("Adding Application Key...") {
+            let message = ConfigAppKeyAdd(applicationKey: applicationKey)
+            return try MeshNetworkManager.instance.send(message, from: element, to: model)
+        }
+    }
+    /// Adds the subscription to the group
+    ///
+    ///
+    func addSubscription(group: Group, model: Model) {
+        start("Subscribing...") {
+            let message: ConfigMessage =
+                ConfigModelSubscriptionAdd(group: group, to: model) ??
+                ConfigModelSubscriptionVirtualAddressAdd(group: group, to: model)!
+            return try MeshNetworkManager.instance.send(message, to: self.node)
+        }
+    }
+    
+    @objc func addAppKeyToNode(){
+        // Add an app key
+        if node.applicationKeys.isEmpty {
+            var appkey: ApplicationKey?
+            var keys: [ApplicationKey]!
+            appkey = nil
+            guard let node = node else {
+                return
+            }
+            let meshNetwork = MeshNetworkManager.instance.meshNetwork!
+            keys = meshNetwork.applicationKeys.notKnownTo(node: node).filter {
+                node.knows(networkKey: $0.boundNetworkKey)
+            }
+            if !keys.isEmpty {
+                appkey = keys.first
+                addKey(appkey!)
+            }
+            // App key was hopefully updated.
+            tableView.reloadSections(.editableSections, with: .automatic)
+        }
+    }
+    
+    @objc func bindAppKeyToElements(){
+        //bind an app key to each element
+        if node.isCompositionDataReceived {
+            // Bind the app key to all models in all elements
+            for element in node.elements {
+                var appkey: ApplicationKey
+                appkey = node.applicationKeys.first!
+                for model in element.models{
+                    // if the model hasn't yet been bound to an application ID and it is not the health server model, bind the model to an app ID now.
+                    if model.boundApplicationKeys.isEmpty && (model.modelIdentifier != ConfigurationServerModelID){
+                        bind(appkey, model:model)
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func subscribeElementsToGroup(){
+        //subscribe element to Festival group
+        if node.isCompositionDataReceived {
+            // Bind the app key to all models in all elements
+            for element in node.elements {
+                for model in element.models{
+                    let meshNetwork = MeshNetworkManager.instance.meshNetwork!
+                    let group = meshNetwork.group(withAddress: GroupAddress)
+                    if !model.boundApplicationKeys.isEmpty && (!model.isSubscribed(to: group!)) && (ModelIDsToSubscribeToGroup.contains(model.modelIdentifier )) {
+                        addSubscription(group:group!, model:model)
+                    }
+                }
+            }
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -160,7 +261,7 @@ class ConfigurationViewController: ProgressViewController {
         }
         if indexPath.isNodeSection {
             cell.textLabel?.text = indexPath.title
-            if indexPath.isUnicastAddress {
+            if indexPath.section == 1 && indexPath.row == 0 {
                 cell.detailTextLabel?.text = node.primaryUnicastAddress.asString()
                 cell.accessoryType = .none
             }
@@ -320,6 +421,15 @@ class ConfigurationViewController: ProgressViewController {
         }
         if indexPath.isRemoveNode {
             presentRemoveNodeConfirmation(from: indexPath)
+        }
+        if indexPath.isAddKeyNode {
+            addAppKeyToNode()
+        }
+        if indexPath.isBindKey {
+            bindAppKeyToElements()
+        }
+        if indexPath.isSubscribeGroup {
+            subscribeElementsToGroup()
         }
     }
     
@@ -558,10 +668,10 @@ private extension IndexPath {
         "Configured", "Excluded"
     ]
     static let actionsTitles = [
-        "Reset Node", "Remove Node"
+        "Reset Node", "Remove Node", "Add App Key", "Bind", "Subscribe"
     ]
     static let actions = [
-        "Reset", "Remove"
+        "Reset", "Remove", "Add App Key", "Bind", "Subscribe"
     ]
     
     var cellIdentifier: String {
@@ -625,15 +735,22 @@ private extension IndexPath {
     }
     
     var isResetNode: Bool {
-        return section == IndexPath.actionsSection && row == 0
+        return isActionsSection && row == 0
     }
     
     var isRemoveNode: Bool {
-        return section == IndexPath.actionsSection && row == 1
+        return isActionsSection && row == 1
+    }
+    var isAddKeyNode: Bool {
+        return isActionsSection && row == 2
     }
     
-    var isUnicastAddress: Bool {
-        return isNodeSection && row == 0
+    var isBindKey: Bool {
+        return isActionsSection && row == 3
+    }
+    
+    var isSubscribeGroup: Bool {
+        return isActionsSection && row == 4
     }
     
     var isTtl: Bool {

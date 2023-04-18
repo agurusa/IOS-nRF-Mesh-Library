@@ -202,7 +202,8 @@ private extension Model {
                modelIdentifier == .genericOnOffClientModelId ||
                modelIdentifier == .genericLevelServerModelId ||
                modelIdentifier == .genericLevelClientModelId ||
-               isSimpleOnOffClient
+               isSimpleOnOffClient                           ||
+               modelIdentifier == .genericPropertyClientModelId
     }
     
     var modelId: UInt32 {

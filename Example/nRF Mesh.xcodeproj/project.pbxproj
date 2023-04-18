@@ -157,6 +157,13 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
+		8732F29229EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
+		8732F29329EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
+		87E33AF229EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
+		87E33AF329EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
+		87E33AF629EDDC260081EF35 /* GenericPropertyClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */; };
+		87E33AF929EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E33AF729EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift */; };
+		87E33AFA29EDDC4C0081EF35 /* GenericUserPropertyStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E33AF829EDDC4C0081EF35 /* GenericUserPropertyStatus.swift */; };
 		A7A59BD5277225A70045A8ED /* GenericPowerOnOff.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7A59BD4277225A70045A8ED /* GenericPowerOnOff.xib */; };
 		A7A59BD7277225E70045A8ED /* GenericPowerOnOffViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A59BD6277225E70045A8ED /* GenericPowerOnOffViewCell.swift */; };
 		A7A59BD92773218C0045A8ED /* GenericPowerOnOffClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A59BD82773218C0045A8ED /* GenericPowerOnOffClientDelegate.swift */; };
@@ -342,6 +349,11 @@
 		74CDF803BCF35EC79B5860CB /* Pods-nRF Mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRF Mesh.release.xcconfig"; path = "Target Support Files/Pods-nRF Mesh/Pods-nRF Mesh.release.xcconfig"; sourceTree = "<group>"; };
 		7605A2D7302CBF65C9CD5530 /* Pods-nRF Mesh Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRF Mesh Tests.debug.xcconfig"; path = "Target Support Files/Pods-nRF Mesh Tests/Pods-nRF Mesh Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F08AB8E3B7A1B0401824E1C /* Pods_nRF_Mesh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nRF_Mesh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPropertyClientCell.swift; sourceTree = "<group>"; };
+		87E33AF129EDDACA0081EF35 /* GenericProperty */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GenericProperty; sourceTree = "<group>"; };
+		87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericPropertyClientDelegate.swift; path = "Source/Mesh Network/GenericProperty/GenericPropertyClientDelegate.swift"; sourceTree = "<group>"; };
+		87E33AF729EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericUserPropertySetUnacknowledged.swift; path = "Source/Mesh Network/GenericProperty/Mesh Messages/GenericUserPropertySetUnacknowledged.swift"; sourceTree = "<group>"; };
+		87E33AF829EDDC4C0081EF35 /* GenericUserPropertyStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericUserPropertyStatus.swift; path = "Source/Mesh Network/GenericProperty/Mesh Messages/GenericUserPropertyStatus.swift"; sourceTree = "<group>"; };
 		8BA6080D6D64DF472887CC10 /* Pods-nRFMeshProvision_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRFMeshProvision_Tests.release.xcconfig"; path = "Target Support Files/Pods-nRFMeshProvision_Tests/Pods-nRFMeshProvision_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		95314CBBCE25A1396EF93139 /* Pods-nRFMeshProvision_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRFMeshProvision_Example.release.xcconfig"; path = "Target Support Files/Pods-nRFMeshProvision_Example/Pods-nRFMeshProvision_Example.release.xcconfig"; sourceTree = "<group>"; };
 		A7A59BD4277225A70045A8ED /* GenericPowerOnOff.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenericPowerOnOff.xib; sourceTree = "<group>"; };
@@ -693,6 +705,7 @@
 		52DF5D8D22968F7C00C297C1 /* Mesh Network */ = {
 			isa = PBXGroup;
 			children = (
+				87E33AF129EDDACA0081EF35 /* GenericProperty */,
 				5288C20B2371A8E000321ED3 /* Simple OnOff */,
 				52DF5D8E229691BD00C297C1 /* NetworkConnection.swift */,
 				5211EAD4250777E100089FF2 /* SceneServerDelegate.swift */,
@@ -727,6 +740,7 @@
 				52E54CD52343875400478F05 /* GenericLevelClientCell.swift */,
 				52E54CD72343876000478F05 /* GenericLevelServerCell.swift */,
 				5288C2152371BC1300321ED3 /* SimpleOnOffClientCell.swift */,
+				8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -734,6 +748,9 @@
 		607FACC71AFB9204008FA782 = {
 			isa = PBXGroup;
 			children = (
+				87E33AF729EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift */,
+				87E33AF829EDDC4C0081EF35 /* GenericUserPropertyStatus.swift */,
+				87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */,
 				529B757E22426D70008F1CE7 /* nRF Mesh.entitlements */,
 				607FACF51AFB993E008FA782 /* Podspec Metadata */,
 				607FACD21AFB9204008FA782 /* Source */,
@@ -877,7 +894,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
-						DevelopmentTeam = P3R8YQEV4L;
+						DevelopmentTeam = MA3PC2RNR4;
 						LastSwiftMigration = 1020;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -935,6 +952,7 @@
 				52CD0A5B2330BF4800A9A181 /* Proxy.storyboard in Resources */,
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
 				A7B526A8277B210000F5C60D /* GenericPowerOnOffSetup.xib in Resources */,
+				87E33AF229EDDACA0081EF35 /* GenericProperty in Resources */,
 				52A9C1C62313D7D80036792A /* GenericLevel.xib in Resources */,
 				F085CA0229D1E0B900C2DF89 /* Subscribe.storyboard in Resources */,
 				5231404E230AC4680074325A /* VendorModel.xib in Resources */,
@@ -950,6 +968,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E33AF329EDDACA0081EF35 /* GenericProperty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1038,8 +1057,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87E33AF929EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift in Sources */,
+				87E33AFA29EDDC4C0081EF35 /* GenericUserPropertyStatus.swift in Sources */,
+				87E33AF629EDDC260081EF35 /* GenericPropertyClientDelegate.swift in Sources */,
 				52DE3ABA25DA871800268D7D /* SensorClientDelegate.swift in Sources */,
 				529B764722522D37008F1CE7 /* UITableView+EmptyView.swift in Sources */,
+				8732F29229EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */,
 				5288153D25125AB600484AF0 /* RootTabBarController.swift in Sources */,
 				52CD0A55232FC11700A9A181 /* AddressCell.swift in Sources */,
 				52313FEE22EAFB090074325A /* SubscribeViewController.swift in Sources */,
@@ -1173,6 +1196,7 @@
 				52B492DB25C8A32E0096E75D /* KeyRefreshProcedure.swift in Sources */,
 				52F6AD6C22B78F3000F0D7DF /* CompositionData.swift in Sources */,
 				523F777022C64FD20030EA6A /* ConfigMessages.swift in Sources */,
+				8732F29329EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */,
 				52DF5D93229C009200C297C1 /* NetworkPdus.swift in Sources */,
 				529B7629224CE481008F1CE7 /* AssigningUnicastAddress.swift in Sources */,
 				529522B6251B850700158AE0 /* Exporting.swift in Sources */,
@@ -1408,7 +1432,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = "nRF Mesh.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P3R8YQEV4L;
+				DEVELOPMENT_TEAM = MA3PC2RNR4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Source/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1418,9 +1442,10 @@
 				MARKETING_VERSION = 3.2.0;
 				MODULE_NAME = ExampleApp;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nordicsemi.nRFProvisioner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cobra.nRFProvisioner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1435,7 +1460,7 @@
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_ENTITLEMENTS = "nRF Mesh.entitlements";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = P3R8YQEV4L;
+				DEVELOPMENT_TEAM = MA3PC2RNR4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Source/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1445,9 +1470,10 @@
 				MARKETING_VERSION = 3.2.0;
 				MODULE_NAME = ExampleApp;
 				OTHER_LDFLAGS = "$(inherited)";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nordicsemi.nRFProvisioner;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cobra.nRFProvisioner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

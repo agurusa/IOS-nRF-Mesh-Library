@@ -131,7 +131,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // A simple vendor model:
             Model(vendorModelId: .simpleOnOffModelId,
                   companyId: .nordicSemiconductorCompanyId,
-                  delegate: SimpleOnOffClientDelegate())
+                  delegate: SimpleOnOffClientDelegate()),
+            // Generic User Property Client model:
+            Model(vendorModelId: .genericPropertyClientModelId,
+                  companyId: .nordicSemiconductorCompanyId,
+                  delegate: GenericPropertyClientDelegate())
         ])
         let element1 = Element(name: "Secondary Element", location: .second, models: [
             Model(sigModelId: .genericOnOffServerModelId,
