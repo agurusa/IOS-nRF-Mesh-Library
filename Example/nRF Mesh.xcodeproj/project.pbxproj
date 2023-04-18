@@ -157,6 +157,8 @@
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
+		8732F29229EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
+		8732F29329EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
 		87E33AF229EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
 		87E33AF329EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
 		87E33AF629EDDC260081EF35 /* GenericPropertyClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */; };
@@ -347,6 +349,7 @@
 		74CDF803BCF35EC79B5860CB /* Pods-nRF Mesh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRF Mesh.release.xcconfig"; path = "Target Support Files/Pods-nRF Mesh/Pods-nRF Mesh.release.xcconfig"; sourceTree = "<group>"; };
 		7605A2D7302CBF65C9CD5530 /* Pods-nRF Mesh Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nRF Mesh Tests.debug.xcconfig"; path = "Target Support Files/Pods-nRF Mesh Tests/Pods-nRF Mesh Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		7F08AB8E3B7A1B0401824E1C /* Pods_nRF_Mesh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nRF_Mesh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPropertyClientCell.swift; sourceTree = "<group>"; };
 		87E33AF129EDDACA0081EF35 /* GenericProperty */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GenericProperty; sourceTree = "<group>"; };
 		87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericPropertyClientDelegate.swift; path = "Source/Mesh Network/GenericProperty/GenericPropertyClientDelegate.swift"; sourceTree = "<group>"; };
 		87E33AF729EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericUserPropertySetUnacknowledged.swift; path = "Source/Mesh Network/GenericProperty/Mesh Messages/GenericUserPropertySetUnacknowledged.swift"; sourceTree = "<group>"; };
@@ -737,6 +740,7 @@
 				52E54CD52343875400478F05 /* GenericLevelClientCell.swift */,
 				52E54CD72343876000478F05 /* GenericLevelServerCell.swift */,
 				5288C2152371BC1300321ED3 /* SimpleOnOffClientCell.swift */,
+				8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1058,6 +1062,7 @@
 				87E33AF629EDDC260081EF35 /* GenericPropertyClientDelegate.swift in Sources */,
 				52DE3ABA25DA871800268D7D /* SensorClientDelegate.swift in Sources */,
 				529B764722522D37008F1CE7 /* UITableView+EmptyView.swift in Sources */,
+				8732F29229EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */,
 				5288153D25125AB600484AF0 /* RootTabBarController.swift in Sources */,
 				52CD0A55232FC11700A9A181 /* AddressCell.swift in Sources */,
 				52313FEE22EAFB090074325A /* SubscribeViewController.swift in Sources */,
@@ -1191,6 +1196,7 @@
 				52B492DB25C8A32E0096E75D /* KeyRefreshProcedure.swift in Sources */,
 				52F6AD6C22B78F3000F0D7DF /* CompositionData.swift in Sources */,
 				523F777022C64FD20030EA6A /* ConfigMessages.swift in Sources */,
+				8732F29329EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */,
 				52DF5D93229C009200C297C1 /* NetworkPdus.swift in Sources */,
 				529B7629224CE481008F1CE7 /* AssigningUnicastAddress.swift in Sources */,
 				529522B6251B850700158AE0 /* Exporting.swift in Sources */,

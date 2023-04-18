@@ -31,16 +31,17 @@
 import Foundation
 import nRFMeshProvision
 
-public struct GenericUserPropertyStatus: StaticVendorMessage {
+public struct GenericUserPropertyStatus: GenericMessage {
      // The Op Code consists of:
     // 0xC0-0000 - Vendor Op Code bitmask
     // 0x03-0000 - The Op Code defined by...
     // 0x00-5900 - Nordic Semiconductor ASA company ID (in Little Endian) as defined here:
     //             https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/
-    public static var vendorOpCode: UInt8 = 0xC0
-    public static var genericUserPropertyStatusCode: UInt8 = 0x4E
-    public static var nordicCIDLittleEndian: UInt16 = 0xFE58
-    public static var opCode: UInt32 = (UInt32(vendorOpCode | genericUserPropertyStatusCode) << 16) | UInt32(nordicCIDLittleEndian.bigEndian)
+//    public static var vendorOpCode: UInt8 = 0xC0
+//    public static var genericUserPropertyStatusCode: UInt8 = 0x4E
+//    public static var nordicCIDLittleEndian: UInt16 = 0xFE58
+//    public static var opCode: UInt32 = (UInt32(vendorOpCode | genericUserPropertyStatusCode) << 16) | UInt32(nordicCIDLittleEndian.bigEndian)
+    public static var opCode: UInt32 = 0x4E
     
     public var parameters: Data? {
         let propIdUint8:[UInt8] = [UInt8(propertyID & 0xff), UInt8(propertyID >> 8)]

@@ -1,4 +1,3 @@
-
 /*
 * Copyright (c) 2019, Nordic Semiconductor
 * All rights reserved.
@@ -29,51 +28,30 @@
 * POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Foundation
+import UIKit
 import nRFMeshProvision
 
-/*
- The Generic User Property Set Unacknowledged message, according to the Bluetooth SIG mesh specs are:
- User Property ID | 2 octets | Property ID identifying a Generic User Property
- User Property Value | variable size | Raw value for the User Property
- Opcode 0x4D
- */
-
-
-public struct GenericUserPropertySetUnacknowledged: GenericMessage {
-    // The Op Code consists of:
-    // 0xC0-0000 - Vendor Op Code bitmask
-    // 0x03-0000 - The Op Code defined by...
-    // 0x00-5900 - Nordic Semiconductor ASA company ID (in Little Endian) as defined here:
-    //             https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/
-    /*
-     var vendorOpCode: UInt8 = 0xC0
-     var genericUserPropertySetUnacknowledgedOpCode: UInt8 = 0x4D
-     var nordicCIDLittleEndian: UInt16 = 0xFE58
-     */
-//    public static var opCode: UInt32 = (UInt32(0xC0 | 0x4D) << 16) | UInt32(0xFE58.bigEndian)
+class GenericPropertyClientCell: BaseModelControlCell<GenericPropertyClientDelegate> {
     
-    public static var opCode: UInt32 = 0x4D
-    public var parameters: Data? {
-        let propIdUint8:[UInt8] = [UInt8(propertyID & 0xff), UInt8(propertyID >> 8)]
-        return Data(propIdUint8 + [UInt8(propertyValue)])
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var ownerButton: UIButton!
+    @IBAction func ownerTapped(_ sender: UIButton) {
+        modelDelegate.propertyValue = 0x01
+    }
+    @IBOutlet weak var listenerButton: UIButton!
+    @IBAction func listenerTapped(_ sender: UIButton) {
+        modelDelegate.propertyValue = 0x00
     }
     
-    /// The state.
-    public let propertyID: UInt16
-    public let propertyValue: Int8
-    
-    init(propertyID: UInt16, propertyValue: Int8) {
-        self.propertyID = propertyID
-        self.propertyValue = propertyValue
+    override func setup(_ model: GenericPropertyClientDelegate?) {
+        // On iOS 12.x tinted icons are initially black.
+        // Forcing adjustment mode fixes the bug.
+        icon.tintAdjustmentMode = .normal
+        
+        let localProvisioner = MeshNetworkManager.instance.meshNetwork?.localProvisioner
+        let isEnabled = localProvisioner?.hasConfigurationCapabilities ?? false
+        
+        ownerButton.isEnabled = true
+        listenerButton.isEnabled = true
     }
-    
-    public init?(parameters: Data) {
-        guard parameters.count == 2 else {
-            return nil
-        }
-        propertyID = UInt16(parameters[0])
-        propertyValue = Int8(parameters[1])
-    }
-    
 }

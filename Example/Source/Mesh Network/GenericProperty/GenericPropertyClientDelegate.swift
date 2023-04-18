@@ -67,7 +67,7 @@ class GenericPropertyClientDelegate: ModelDelegate {
     
     init() {
         // This Model Delegate receives Generic User Property messages. 
-        let types: [StaticVendorMessage.Type] = [
+        let types: [GenericMessage.Type] = [
             GenericUserPropertyStatus.self
         ]
         messageTypes = types.toMap()
