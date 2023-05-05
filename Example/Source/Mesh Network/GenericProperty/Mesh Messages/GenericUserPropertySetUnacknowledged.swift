@@ -41,39 +41,33 @@ import nRFMeshProvision
 
 
 public struct GenericUserPropertySetUnacknowledged: GenericMessage {
-    // The Op Code consists of:
-    // 0xC0-0000 - Vendor Op Code bitmask
-    // 0x03-0000 - The Op Code defined by...
-    // 0x00-5900 - Nordic Semiconductor ASA company ID (in Little Endian) as defined here:
-    //             https://www.bluetooth.com/specifications/assigned-numbers/company-identifiers/
-    /*
-     var vendorOpCode: UInt8 = 0xC0
-     var genericUserPropertySetUnacknowledgedOpCode: UInt8 = 0x4D
-     var nordicCIDLittleEndian: UInt16 = 0xFE58
-     */
-//    public static var opCode: UInt32 = (UInt32(0xC0 | 0x4D) << 16) | UInt32(0xFE58.bigEndian)
     
     public static var opCode: UInt32 = 0x4D
     public var parameters: Data? {
-        let propIdUint8:[UInt8] = [UInt8(propertyID & 0xff), UInt8(propertyID >> 8)]
-        return Data(propIdUint8 + [UInt8(propertyValue)])
+        var propIDMutable = propertyID
+        let data = Data(bytes: &propIDMutable, count: MemoryLayout<UInt16>.size)
+        let propIdUint8 = [UInt8](data)
+//        let propValueSize: [UInt8] = [UInt8(propValueSize)]
+        let propValueUint8: [UInt8] = [UInt8(propertyValue)]
+//        return Data(propValueSize + propIdUint8 + propValueUint8)
+        return Data(propIdUint8 + propValueUint8)
     }
     
     /// The state.
     public let propertyID: UInt16
-    public let propertyValue: Int8
+//    public let propValueSize: UInt8
+    public let propertyValue: UInt8
     
-    init(propertyID: UInt16, propertyValue: Int8) {
+    init(propertyID: UInt16, propertyValue: UInt8) {
         self.propertyID = propertyID
+//        self.propValueSize = 0x04
         self.propertyValue = propertyValue
     }
     
     public init?(parameters: Data) {
-        guard parameters.count == 2 else {
-            return nil
-        }
         propertyID = UInt16(parameters[0])
-        propertyValue = Int8(parameters[1])
+//        propValueSize = 0x04
+        propertyValue = parameters[1]
     }
     
 }

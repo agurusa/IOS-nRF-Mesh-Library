@@ -125,6 +125,8 @@ class ModelViewController: ProgressViewController {
                            forCellReuseIdentifier: UInt16.genericPowerOnOffSetupServerModelId.hex)
         tableView.register(UINib(nibName: "VendorModel", bundle: nil),
                            forCellReuseIdentifier: "vendor")
+        tableView.register(UINib(nibName: "GenericPropertySet", bundle:nil),
+                           forCellReuseIdentifier: UInt16.genericPropertyClientModelId.hex)
     }
     
     override func viewWillAppear(_ animated: Bool) {

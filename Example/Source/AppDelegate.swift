@@ -133,9 +133,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                   companyId: .nordicSemiconductorCompanyId,
                   delegate: SimpleOnOffClientDelegate()),
             // Generic User Property Client model:
-            Model(vendorModelId: .genericPropertyClientModelId,
-                  companyId: .nordicSemiconductorCompanyId,
-                  delegate: GenericPropertyClientDelegate())
+            Model(sigModelId: .genericPropertyClientModelId,
+                  delegate: GenericPropertyClientDelegate()),
+            // Generic User Property Server model:
+            Model(sigModelId: .genericUserPropertyServerModelId,
+                  delegate: GenericUserPropertyServerDelegate(meshNetwork))
         ])
         let element1 = Element(name: "Secondary Element", location: .second, models: [
             Model(sigModelId: .genericOnOffServerModelId,
