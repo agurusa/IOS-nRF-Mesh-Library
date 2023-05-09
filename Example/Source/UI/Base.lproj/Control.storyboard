@@ -129,8 +129,32 @@
                                     <outlet property="icon" destination="iL6-2P-Blm" id="PxH-Na-WMl"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="00001003" id="Axc-6v-6B2" customClass="GenericLevelClientCell" customModule="nRF_Mesh" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="00001013" id="b3n-8o-OSF" customClass="GenericUserPropertyServerCell" customModule="nRF_Mesh" customModuleProvider="target">
                                 <rect key="frame" x="16" y="190" width="130" height="130"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="U6o-ZY-V4g">
+                                    <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_scenes_24pt" translatesAutoresizingMaskIntoConstraints="NO" id="3we-LZ-bKC">
+                                            <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
+                                            <color key="tintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="3we-LZ-bKC" secondAttribute="bottom" id="btg-23-bMJ"/>
+                                        <constraint firstItem="3we-LZ-bKC" firstAttribute="top" secondItem="U6o-ZY-V4g" secondAttribute="top" id="dvm-Os-4sR"/>
+                                        <constraint firstItem="3we-LZ-bKC" firstAttribute="leading" secondItem="U6o-ZY-V4g" secondAttribute="leading" id="oGX-sP-ZhB"/>
+                                        <constraint firstAttribute="trailing" secondItem="3we-LZ-bKC" secondAttribute="trailing" id="q1r-5x-SsJ"/>
+                                    </constraints>
+                                </collectionViewCellContentView>
+                                <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                                <connections>
+                                    <outlet property="icon" destination="3we-LZ-bKC" id="fBM-Kz-fdF"/>
+                                </connections>
+                            </collectionViewCell>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="00001003" id="Axc-6v-6B2" customClass="GenericLevelClientCell" customModule="nRF_Mesh" customModuleProvider="target">
+                                <rect key="frame" x="268" y="190" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="T0j-vx-REu">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -186,7 +210,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="00001002" id="dEZ-Nh-6sy" customClass="GenericLevelServerCell" customModule="nRF_Mesh" customModuleProvider="target">
-                                <rect key="frame" x="268" y="190" width="130" height="130"/>
+                                <rect key="frame" x="16" y="330" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9tw-2h-HJs">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -220,7 +244,7 @@
                                 </connections>
                             </collectionViewCell>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="00590001" id="XSm-FN-yJm" customClass="SimpleOnOffClientCell" customModule="nRF_Mesh" customModuleProvider="target">
-                                <rect key="frame" x="16" y="330" width="130" height="130"/>
+                                <rect key="frame" x="268" y="330" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WPp-KP-9Qd">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -273,8 +297,8 @@
                                     <outlet property="onButton" destination="Oib-i6-1MV" id="9FY-bI-yWC"/>
                                 </connections>
                             </collectionViewCell>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="00591015" id="2iA-9n-oKk" customClass="GenericPropertyClientCell" customModule="nRF_Mesh" customModuleProvider="target">
-                                <rect key="frame" x="268" y="330" width="130" height="130"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="00001015" id="2iA-9n-oKk" customClass="GenericPropertyClientCell" customModule="nRF_Mesh" customModuleProvider="target">
+                                <rect key="frame" x="16" y="470" width="130" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UbU-lC-l7n">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="130"/>
@@ -351,6 +375,7 @@
     <resources>
         <image name="groups_generic_level_outline" width="50" height="50"/>
         <image name="groups_generic_onoff_outline" width="50" height="50"/>
+        <image name="ic_scenes_24pt" width="24" height="24"/>
         <image name="people-group" width="100" height="100"/>
         <image name="tab_control_outline_black_24pt" width="24" height="24"/>
         <systemColor name="secondarySystemGroupedBackgroundColor">

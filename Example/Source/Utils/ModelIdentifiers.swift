@@ -50,6 +50,7 @@ extension UInt16 {
     static let genericPowerOnOffClientModelId: UInt16 = 0x1008
     
     static let genericPropertyClientModelId: UInt16 = 0x1015
+    static let genericUserPropertyServerModelId: UInt16 = 0x1013
     
     static let sceneServerModelId: UInt16 = 0x1203
     static let sceneSetupServerModelId: UInt16 = 0x1204
