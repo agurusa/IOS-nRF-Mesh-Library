@@ -56,11 +56,7 @@ class GenericPropertyClientDelegate: ModelDelegate {
         }
     }
     
-    var propertyID: UInt16 = 0x1111{
-        didSet{
-            publish(using: MeshNetworkManager.instance)
-        }
-    }
+    var propertyID: UInt16 = 0x1111
 
     private var logger: LoggerDelegate? {
         return MeshNetworkManager.instance.logger

@@ -149,7 +149,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                        defaultTransitionTimeServer: defaultTransitionTimeServerDelegate,
                                                        elementIndex: 1)),
             Model(sigModelId: .genericOnOffClientModelId, delegate: GenericOnOffClientDelegate()),
-            Model(sigModelId: .genericLevelClientModelId, delegate: GenericLevelClientDelegate())
+            Model(sigModelId: .genericLevelClientModelId, delegate: GenericLevelClientDelegate()),
+            // Generic User Property Client model:
+            Model(sigModelId: .genericPropertyClientModelId,
+                  delegate: GenericPropertyClientDelegate())
         ])
         meshNetworkManager.localElements = [element0, element1]
         

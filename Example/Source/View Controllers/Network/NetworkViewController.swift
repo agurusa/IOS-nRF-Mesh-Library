@@ -36,6 +36,7 @@ private enum SectionType {
     case configuredNodes
     case provisionersNodes
     case thisProvisioner
+    case actionButtons
     
     var title: String? {
         switch self {
@@ -43,6 +44,7 @@ private enum SectionType {
         case .configuredNodes:    return "Configured Nodes"
         case .provisionersNodes:  return "Other Provisioners"
         case .thisProvisioner:    return "This Provisioner"
+        case .actionButtons:      return "Actions"
         }
     }
 }
@@ -69,9 +71,22 @@ private struct Section {
 
 class NetworkViewController: UITableViewController {
     private var sections: [Section] = []
+    private var genericpropertyclientcell: GroupClientCell = GroupClientCell()
     
     // MARK: - Implementation
     
+    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        genericpropertyclientcell.modelDelegate?.propertyID = 0x1112
+        for (index, node) in self.sections[0].nodes.enumerated(){
+            print(node.primaryUnicastAddress, index)
+            genericpropertyclientcell.modelDelegate?.propertyValue = 0x02
+        }
+    }
+        
+    @IBAction func buttonTapped(_ sender: Any) {
+        //save the index and the unicast address of each item (uint16)
+
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setEmptyView(title: "No Nodes",
@@ -173,7 +188,11 @@ private extension NetworkViewController {
             }
             if let thisProvisionerNode = network.localProvisioner?.node {
                 sections.append(Section(type: .thisProvisioner, nodes: [thisProvisionerNode]))
+                if let genericpropertyclientmodel = thisProvisionerNode.elements[1].models.first(where: {$0.modelIdentifier == .genericPropertyClientModelId}) {
+                    genericpropertyclientcell.model = genericpropertyclientmodel
+                }
             }
+            
         }
         tableView.reloadData()
         
@@ -182,6 +201,7 @@ private extension NetworkViewController {
         } else {
             tableView.hideEmptyView()
         }
+        
     }
     
 }
