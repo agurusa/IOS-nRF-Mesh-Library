@@ -41,7 +41,6 @@ class GenericPropertyClientDelegate: ModelDelegate {
     var publicationMessageComposer: MessageComposer? {
         func compose() -> MeshMessage {
             return GenericUserPropertySetUnacknowledged(propertyID: self.propertyID, propertyValue: self.propertyValue)
-//            return GenericUserPropertyGet(propertyID: 0x1111) // DEBUG ONLY
         }
         let request = compose()
         return {
@@ -50,7 +49,7 @@ class GenericPropertyClientDelegate: ModelDelegate {
     }
     
     /// The current state of the Generic Property Client model.
-    var propertyValue: UInt8 = 0x00{
+    var propertyValue: [UInt8] = [0x00]{
         didSet {
             publish(using: MeshNetworkManager.instance)
         }

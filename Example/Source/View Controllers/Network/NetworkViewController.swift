@@ -78,15 +78,14 @@ class NetworkViewController: UITableViewController {
     @IBAction func doneTapped(_ sender: UIBarButtonItem) {
         genericpropertyclientcell.modelDelegate?.propertyID = 0x1112
         for (index, node) in self.sections[0].nodes.enumerated(){
-            print(node.primaryUnicastAddress, index)
-            genericpropertyclientcell.modelDelegate?.propertyValue = 0x02
+            let addrhighbyte = UInt8((node.primaryUnicastAddress & 0xff00) >> 8)
+            let addrlowbyte = UInt8(node.primaryUnicastAddress & 0x00ff)
+            let uint8Index = UInt8(bitPattern: Int8(index))
+            genericpropertyclientcell.modelDelegate?.propertyValue = [addrhighbyte, addrlowbyte, uint8Index]
+            
         }
     }
         
-    @IBAction func buttonTapped(_ sender: Any) {
-        //save the index and the unicast address of each item (uint16)
-
-    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setEmptyView(title: "No Nodes",

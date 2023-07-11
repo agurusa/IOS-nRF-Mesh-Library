@@ -36,11 +36,11 @@ class GenericPropertyClientCell: BaseModelControlCell<GenericPropertyClientDeleg
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var ownerButton: UIButton!
     @IBAction func ownerTapped(_ sender: UIButton) {
-        modelDelegate.propertyValue = 0x00
+        modelDelegate.propertyValue = [0x00]
     }
     @IBOutlet weak var listenerButton: UIButton!
     @IBAction func listenerTapped(_ sender: UIButton) {
-        modelDelegate.propertyValue = 0x01
+        modelDelegate.propertyValue = [0x01]
     }
     
     override func setup(_ model: GenericPropertyClientDelegate?) {
