@@ -81,7 +81,15 @@ class NetworkViewController: UITableViewController {
             let addrhighbyte = UInt8((node.primaryUnicastAddress & 0xff00) >> 8)
             let addrlowbyte = UInt8(node.primaryUnicastAddress & 0x00ff)
             let uint8Index = UInt8(bitPattern: Int8(index))
-            genericpropertyclientcell.modelDelegate?.propertyValue = [addrhighbyte, addrlowbyte, uint8Index]
+            //for now, the first one in the list is the group owner.
+            var group_role = UInt8(0);
+            if(index == 0){
+                group_role = UInt8(0)
+            }
+            else {
+                group_role = UInt8(1)
+            }
+            genericpropertyclientcell.modelDelegate?.propertyValue = [addrhighbyte, addrlowbyte, uint8Index, group_role]
             
         }
     }
