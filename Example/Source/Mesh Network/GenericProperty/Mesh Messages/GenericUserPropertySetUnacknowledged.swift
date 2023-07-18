@@ -47,27 +47,24 @@ public struct GenericUserPropertySetUnacknowledged: GenericMessage {
         var propIDMutable = propertyID
         let data = Data(bytes: &propIDMutable, count: MemoryLayout<UInt16>.size)
         let propIdUint8 = [UInt8](data)
-//        let propValueSize: [UInt8] = [UInt8(propValueSize)]
-        let propValueUint8: [UInt8] = [UInt8(propertyValue)]
-//        return Data(propValueSize + propIdUint8 + propValueUint8)
-        return Data(propIdUint8 + propValueUint8)
+//        let propValueUint8: [UInt8] = [UInt8(propertyValue)]
+//        return Data(propIdUint8 + propValueUint8)
+        return Data(propIdUint8 + propertyValue)
     }
     
     /// The state.
     public let propertyID: UInt16
-//    public let propValueSize: UInt8
-    public let propertyValue: UInt8
+    public let propertyValue: [UInt8]
     
-    init(propertyID: UInt16, propertyValue: UInt8) {
+    init(propertyID: UInt16, propertyValue: [UInt8]) {
         self.propertyID = propertyID
-//        self.propValueSize = 0x04
         self.propertyValue = propertyValue
     }
     
     public init?(parameters: Data) {
+        //todo: this isn't working properly. parse the received message appropriately.
         propertyID = UInt16(parameters[0])
-//        propValueSize = 0x04
-        propertyValue = parameters[1]
+        propertyValue = [UInt8](arrayLiteral: parameters[1])
     }
     
 }

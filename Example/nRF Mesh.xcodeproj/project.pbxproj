@@ -163,6 +163,7 @@
 		8732F29229EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
 		8732F29329EF256A00B42A42 /* GenericPropertyClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */; };
 		87BB5E202A04227200E9CAF3 /* GenericUserPropertyGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BB5E1F2A04227200E9CAF3 /* GenericUserPropertyGet.swift */; };
+		87CC19162A4BB38F007600E2 /* GroupClientCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CC19152A4BB38F007600E2 /* GroupClientCell.swift */; };
 		87E33AF229EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
 		87E33AF329EDDACA0081EF35 /* GenericProperty in Resources */ = {isa = PBXBuildFile; fileRef = 87E33AF129EDDACA0081EF35 /* GenericProperty */; };
 		87E33AF629EDDC260081EF35 /* GenericPropertyClientDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */; };
@@ -357,6 +358,7 @@
 		871E86222A01B3EC0074B387 /* GenericUserPropertyServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericUserPropertyServerCell.swift; sourceTree = "<group>"; };
 		8732F29129EF256A00B42A42 /* GenericPropertyClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericPropertyClientCell.swift; sourceTree = "<group>"; };
 		87BB5E1F2A04227200E9CAF3 /* GenericUserPropertyGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericUserPropertyGet.swift; path = "Source/Mesh Network/GenericProperty/Mesh Messages/GenericUserPropertyGet.swift"; sourceTree = "<group>"; };
+		87CC19152A4BB38F007600E2 /* GroupClientCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupClientCell.swift; sourceTree = "<group>"; };
 		87E33AF129EDDACA0081EF35 /* GenericProperty */ = {isa = PBXFileReference; lastKnownFileType = folder; path = GenericProperty; sourceTree = "<group>"; };
 		87E33AF529EDDC260081EF35 /* GenericPropertyClientDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericPropertyClientDelegate.swift; path = "Source/Mesh Network/GenericProperty/GenericPropertyClientDelegate.swift"; sourceTree = "<group>"; };
 		87E33AF729EDDC4C0081EF35 /* GenericUserPropertySetUnacknowledged.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GenericUserPropertySetUnacknowledged.swift; path = "Source/Mesh Network/GenericProperty/Mesh Messages/GenericUserPropertySetUnacknowledged.swift"; sourceTree = "<group>"; };
@@ -604,6 +606,7 @@
 				52DF5D8B228DAA0500C297C1 /* NodeViewCell.swift */,
 				5283527E22806BA60097B949 /* Provisioning */,
 				52DF5D88228DA75F00C297C1 /* Configuration */,
+				87CC19152A4BB38F007600E2 /* GroupClientCell.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1100,6 +1103,7 @@
 				52E54CDD23438B2E00478F05 /* GenericOnOffClientDelegate.swift in Sources */,
 				52DF5D8C228DAA0500C297C1 /* NodeViewCell.swift in Sources */,
 				52CD0A50232FA6CD00A9A181 /* ProxyViewController.swift in Sources */,
+				87CC19162A4BB38F007600E2 /* GroupClientCell.swift in Sources */,
 				528AB9FA228D856C000BE9DC /* ProvisioningViewDelegate.swift in Sources */,
 				5288C2162371BC1300321ED3 /* SimpleOnOffClientCell.swift in Sources */,
 				5288C20423704EF300321ED3 /* ConnectionModeCell.swift in Sources */,

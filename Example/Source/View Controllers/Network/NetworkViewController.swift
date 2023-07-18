@@ -36,6 +36,7 @@ private enum SectionType {
     case configuredNodes
     case provisionersNodes
     case thisProvisioner
+    case actionButtons
     
     var title: String? {
         switch self {
@@ -43,6 +44,7 @@ private enum SectionType {
         case .configuredNodes:    return "Configured Nodes"
         case .provisionersNodes:  return "Other Provisioners"
         case .thisProvisioner:    return "This Provisioner"
+        case .actionButtons:      return "Actions"
         }
     }
 }
@@ -69,9 +71,29 @@ private struct Section {
 
 class NetworkViewController: UITableViewController {
     private var sections: [Section] = []
+    private var genericpropertyclientcell: GroupClientCell = GroupClientCell()
     
     // MARK: - Implementation
     
+    @IBAction func doneTapped(_ sender: UIBarButtonItem) {
+        genericpropertyclientcell.modelDelegate?.propertyID = 0x1112
+        for (index, node) in self.sections[0].nodes.enumerated(){
+            let addrhighbyte = UInt8((node.primaryUnicastAddress & 0xff00) >> 8)
+            let addrlowbyte = UInt8(node.primaryUnicastAddress & 0x00ff)
+            let uint8Index = UInt8(bitPattern: Int8(index))
+            //for now, the first one in the list is the group owner.
+            var group_role = UInt8(0);
+            if(index == 0){
+                group_role = UInt8(0)
+            }
+            else {
+                group_role = UInt8(1)
+            }
+            genericpropertyclientcell.modelDelegate?.propertyValue = [addrhighbyte, addrlowbyte, uint8Index, group_role]
+            
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.setEmptyView(title: "No Nodes",
@@ -173,7 +195,11 @@ private extension NetworkViewController {
             }
             if let thisProvisionerNode = network.localProvisioner?.node {
                 sections.append(Section(type: .thisProvisioner, nodes: [thisProvisionerNode]))
+                if let genericpropertyclientmodel = thisProvisionerNode.elements[1].models.first(where: {$0.modelIdentifier == .genericPropertyClientModelId}) {
+                    genericpropertyclientcell.model = genericpropertyclientmodel
+                }
             }
+            
         }
         tableView.reloadData()
         
@@ -182,6 +208,7 @@ private extension NetworkViewController {
         } else {
             tableView.hideEmptyView()
         }
+        
     }
     
 }
