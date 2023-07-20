@@ -31,6 +31,7 @@
 import UIKit
 import os.log
 import nRFMeshProvision
+import FirebaseCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -72,6 +73,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             meshNetworkDidChange()
         }
         
+        // connect Firebase at launch
+        FirebaseApp.configure()
         return true
     }
     
